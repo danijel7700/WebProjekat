@@ -56,7 +56,8 @@ namespace WebProjekat.Controllers
                 new
                 {
                     ID = p.Usluga.ID,
-                    Tip = p.Usluga.Tip
+                    Tip = p.Usluga.Tip,
+                    Cena = p.Usluga.Cena
                 }).ToListAsync());
             }
             catch(Exception e)
@@ -64,6 +65,28 @@ namespace WebProjekat.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        /*[Route("IzbrisiUslugu/{id}")]
+        [HttpDelete]
+        public async Task<ActionResult> IzbrisiUslugu(int id)
+        {
+            if(id <= 0)
+            {
+                return BadRequest("Nevalidan ID!");
+            }
+
+            try
+            {
+                var z = await Context.Usluge.FindAsync(id);
+                Context.Usluge.Remove(z);
+                await Context.SaveChangesAsync();
+                return Ok("Usluga je izbrisana!");
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }*/
         
         
 

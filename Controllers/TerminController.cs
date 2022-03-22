@@ -32,7 +32,7 @@ namespace WebProjekat.Controllers
                 return Ok( await Context.Termini.Where(p => !pom.Contains(p.ID)).Select(p=>
                 new{
                     Id = p.ID,
-                    Vreme = p.Vreme.ToString("dddd, dd MMMM yyyy HH:mm")
+                    Vreme = p.Vreme.ToString("dd/MM/yyyy H:mm")
                 }).ToListAsync());
             }
             catch(Exception e)

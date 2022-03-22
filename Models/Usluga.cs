@@ -14,6 +14,9 @@ namespace Models
         [MaxLength(30)]
         public string Tip { get; set; }
 
+        [Required]
+        public int Cena { get; set; }
+
         public List<Zakazano> ZakazanTermin { get; set; }
 
         public List<Spoj> Zubari { get; set; }

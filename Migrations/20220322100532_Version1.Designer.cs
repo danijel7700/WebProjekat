@@ -10,8 +10,8 @@ using Models;
 namespace WebProjekat.Migrations
 {
     [DbContext(typeof(OrdinacijaContext))]
-    [Migration("20220321192647_Ver1")]
-    partial class Ver1
+    [Migration("20220322100532_Version1")]
+    partial class Version1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,6 +112,9 @@ namespace WebProjekat.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("Cena")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tip")
                         .IsRequired()

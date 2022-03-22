@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebProjekat.Migrations
 {
-    public partial class Ver1 : Migration
+    public partial class Version1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,7 +55,8 @@ namespace WebProjekat.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Tip = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    Tip = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Cena = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

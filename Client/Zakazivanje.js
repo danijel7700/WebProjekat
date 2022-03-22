@@ -7,7 +7,7 @@ export class Zakazivanje{
 
   
 
-    constructor(id,ime,prezime,vreme,tipUsluge,imeZubara,prezimeZubara,ordinacija,idZubara,vremeDT,korID){
+    constructor(id,ime,prezime,vreme,tipUsluge,imeZubara,prezimeZubara,ordinacija,idZubara,vremeDT,korID,cena){
         this.id=id;
         this.ime=ime;
         this.prezime=prezime;
@@ -19,6 +19,7 @@ export class Zakazivanje{
         this.idZubara = idZubara;
         this.vremeDT = vremeDT;
         this.korID=korID;
+        this.cena=cena;
     }
 
     crtaj(zakazanTerminDiv){
@@ -48,6 +49,11 @@ export class Zakazivanje{
         pomLab5.innerHTML="Ordinacija: "+this.ordinacija;
         pomLab5.className="zakazivanjeLab";
         zakazanTerminDiv.appendChild(pomLab5);
+
+        var pomLab6 = document.createElement("label");
+        pomLab6.innerHTML="Cena: "+this.cena+" din";
+        pomLab6.className="zakazivanjeLab";
+        zakazanTerminDiv.appendChild(pomLab6);
 
         var btnIzmeniKorisnika=document.createElement("button");
         btnIzmeniKorisnika.onclick=(ev)=>this.izmeniZakazivanje(zakazanTerminDiv);
@@ -148,7 +154,7 @@ export class Zakazivanje{
                     p.json().then(data =>
                         {
                             data.forEach(element =>{
-                                var u = new Usluga(element.id,element.tip);
+                                var u = new Usluga(element.id,element.tip,element.cena);
                                 u.crtajIzmena(selUsluga);
 
                             })

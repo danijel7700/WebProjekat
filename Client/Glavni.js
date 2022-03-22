@@ -44,6 +44,10 @@ export class Glavni{
 
                 var se = document.createElement("select");
                 se.className="OrdSel"
+                se.onclick=(ev) => {
+                    ordinacijaDiv.innerHTML="";
+                    adresaDiv.innerHTML="";
+                }
                 pocetniDiv.appendChild(se);
 
                 var op;
@@ -59,6 +63,8 @@ export class Glavni{
                 adresaDiv.className="adresaDiv";
                 pocetniDiv.appendChild(adresaDiv);
 
+
+                
                 let btnIzaberiOrdinaciju = document.createElement("button");
                 btnIzaberiOrdinaciju.onclick=(ev)=>this.ordinacijaInfo(adresaDiv, ordinacijaDiv);
                 btnIzaberiOrdinaciju.className = "plava";
@@ -68,6 +74,8 @@ export class Glavni{
                 var ordinacijaDiv = document.createElement("div");
                 ordinacijaDiv.className = "ordinacijaDiv";
                 pocetniDiv.appendChild(ordinacijaDiv);
+
+                
             }
             else formaDiv.innerHTML="";
 
@@ -131,6 +139,9 @@ export class Glavni{
 
             var selZubari = document.createElement("select");
             selZubari.className="selZubari";
+            selZubari.onclick=(ev) => {
+                zubarDiv.innerHTML="";
+            }
             izDiv.appendChild(selZubari);
 
             fetch("https://localhost:5001/Zubar/VratiZubare/"+ord,
@@ -189,7 +200,7 @@ export class Glavni{
                     p.json().then(data =>
                         {
                             data.forEach(element =>{
-                                var u = new Usluga(element.id,element.tip);
+                                var u = new Usluga(element.id,element.tip,element.cena);
                                 var uDiv = document.createElement("div");
                                 uDiv.className="uDiv";
                                 uslugeDiv.appendChild(uDiv);
@@ -246,6 +257,7 @@ export class Glavni{
             alert("Morate izabrati uslugu!");
             return;
         }
+
 
         var ts = this.kont.querySelector(".terminSel");
         var t = ts.options[ts.selectedIndex].value;
@@ -434,8 +446,9 @@ export class Glavni{
                                 }
                                 korisnikDivDesniNazad.appendChild(x);
                             }   
+                            else alert("Korisnik nema nijedan zakazan termin!");
                             data.forEach(element =>{
-                                var z = new Zakazivanje(element.id,element.ime,element.prezime,element.vreme,element.tipUsluge,element.imeZubara,element.prezimeZubara,element.ordinacija,element.idZubara,element.vremeDT,element.korID);
+                                var z = new Zakazivanje(element.id,element.ime,element.prezime,element.vreme,element.tipUsluge,element.imeZubara,element.prezimeZubara,element.ordinacija,element.idZubara,element.vremeDT,element.korID,element.cena);
                                 var zakazanTerminDiv = document.createElement("div");
                                 zakazanTerminDiv.className="zakazanTerminDiv";
                                 korisnikDivDesniPrikazi.appendChild(zakazanTerminDiv);

@@ -174,14 +174,15 @@ namespace WebProjekat.Controllers
                                         Id = p.ID,
                                         Ime = p.Korisnik.Ime,
                                         Prezime = p.Korisnik.Prezime,
-                                        Vreme = p.Termin.Vreme.ToString("dddd, dd MMMM yyyy HH:mm"),
+                                        Vreme = p.Termin.Vreme.ToString("dd/MM/yyyy H:mm"),
                                         TipUsluge = p.Usluga.Tip,
                                         ImeZubara = p.Zubar.Ime,
                                         PrezimeZubara = p.Zubar.Prezime,
                                         Ordinacija = p.Zubar.Ordinacija.Naziv,
                                         IdZubara = p.Zubar.ID,
                                         VremeDT = p.Termin.Vreme,
-                                        KorID = p.Korisnik.ID
+                                        KorID = p.Korisnik.ID,
+                                        Cena = p.Usluga.Cena
                                     }
                                 ).ToListAsync();
 

@@ -111,6 +111,9 @@ namespace WebProjekat.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("Cena")
+                        .HasColumnType("int");
+
                     b.Property<string>("Tip")
                         .IsRequired()
                         .HasMaxLength(30)
